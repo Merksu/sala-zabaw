@@ -257,14 +257,6 @@ h1, h2, h3 { margin-top: 0; color: var(--dark); line-height: 1.25; }
   padding: 14px 18px;
 }
 
-.final-cta {
-  color: #fff;
-  text-align: center;
-  background: linear-gradient(to right, rgba(2,132,199,.9), rgba(15,23,42,.84)),
-    url("https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1800&q=80") center/cover;
-}
-
-.final-cta h2 { color: #fff; font-size: clamp(1.7rem, 3.2vw, 2.6rem); }
 footer {
   text-align: center;
   color: var(--muted);
@@ -289,14 +281,12 @@ footer {
 }
 
 body.js-ready .reveal {
-.reveal {
   opacity: 0;
   transform: translateY(24px);
   will-change: transform, opacity;
 }
 
 body.js-ready .reveal.visible {
-.reveal.visible {
   opacity: 1;
   transform: translateY(0);
   transition: opacity .7s ease, transform .7s ease;
