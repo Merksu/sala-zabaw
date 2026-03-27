@@ -43,6 +43,32 @@
     .hero h1 { color: white; font-size: clamp(1.95rem, 4vw, 3.3rem); margin-bottom: 16px; }
     .hero .subtitle { font-size: clamp(1.05rem, 2vw, 1.25rem); margin-bottom: 20px; }
     .hero .meta { font-size: 0.98rem; color: #e2e8f0; margin-top: 14px; }
+    .hero .container > * {
+      animation: heroFade .8s ease both;
+    }
+    .hero .container > *:nth-child(2) { animation-delay: .15s; }
+    .hero .container > *:nth-child(3) { animation-delay: .3s; }
+    .hero .container > *:nth-child(4) { animation-delay: .45s; }
+    .hero .container > *:nth-child(5) { animation-delay: .6s; }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .badge {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: .92rem;
+      animation: bounceInPlace 2.4s ease-in-out infinite;
+      backdrop-filter: blur(3px);
+    }
+    .badge:nth-child(2) { animation-delay: .3s; }
+    .badge:nth-child(3) { animation-delay: .6s; }
 
     .hero::before, .hero::after {
       content: "";
@@ -79,6 +105,18 @@
     .btn-secondary { background: var(--primary); color: white; }
     .btn-outline { background: transparent; color: var(--dark); border-color: var(--primary); }
     .pulse { animation: pulseGlow 2.1s ease-in-out infinite; }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-130%);
+      background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.35) 50%, transparent 80%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
 
     .section-title { text-align: center; margin-bottom: 28px; }
 
@@ -208,9 +246,24 @@
       50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
     }
 
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     @keyframes floatBlob {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-16px) scale(1.08); }
+    }
+
+    @keyframes bounceInPlace {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes shimmer {
+      0%, 20% { transform: translateX(-130%); }
+      60%, 100% { transform: translateX(130%); }
     }
 
     footer { padding: 20px 0 92px; text-align: center; color: var(--muted); font-size: .95rem; }
@@ -229,8 +282,13 @@
       <p class="subtitle"><strong>Największa Sala Zabaw dla Dzieci w Zielonej Górze 🎉</strong><br>Urodziny, zabawa i niezapomniane chwile dla Twojego dziecka.</p>
       <p>Sala Zabaw Arek przy ul. Zacisze 22 to jedno z najpopularniejszych miejsc dla dzieci w Zielonej Górze. Ponad 1200 opinii i ocena 4,5⭐ w Google.</p>
       <div class="btn-group">
-        <a class="btn btn-primary" href="tel:+48684537088">🟢 Zadzwoń i zarezerwuj urodziny 📞 68 453 70 88</a>
-        <a class="btn btn-secondary" href="#kontakt">🔵 Sprawdź dostępne terminy</a>
+        <a class="btn btn-primary btn-shimmer pulse" href="tel:+48684537088">🟢 Zadzwoń i zarezerwuj urodziny 📞 68 453 70 88</a>
+        <a class="btn btn-secondary btn-shimmer" href="#kontakt">🔵 Sprawdź dostępne terminy</a>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">🎈 Mega zabawa</span>
+        <span class="badge">🥳 Najlepsze urodziny</span>
+        <span class="badge">⭐ 4,5 / 5 w Google</span>
       </div>
       <p class="meta">📍 Zielona Góra – ul. Zacisze 22<br>⏰ Otwarte codziennie 11:00 – 20:00</p>
     </div>
@@ -284,7 +342,7 @@
             <p>ceny weekendowe</p>
           </div>
         </div>
-        <a class="btn btn-primary" href="tel:+48684537088">🟢 Zadzwoń i zapytaj o szczegóły</a>
+        <a class="btn btn-primary btn-shimmer" href="tel:+48684537088">🟢 Zadzwoń i zapytaj o szczegóły</a>
       </div>
     </div>
   </section>
@@ -312,7 +370,7 @@
         <blockquote class="card">„Dużo atrakcji, czysto i bezpiecznie. Dzieci zachwycone!”</blockquote>
       </div>
       <div class="btn-group" style="justify-content:center; margin-top:20px;">
-        <a class="btn btn-primary" href="tel:+48684537088">📞 Zarezerwuj urodziny dla swojego dziecka</a>
+        <a class="btn btn-primary btn-shimmer" href="tel:+48684537088">📞 Zarezerwuj urodziny dla swojego dziecka</a>
       </div>
     </div>
   </section>
@@ -355,7 +413,7 @@
     <div class="container">
       <h2>Zorganizuj niezapomniane urodziny dla swojego dziecka 🎉</h2>
       <div class="btn-group" style="justify-content:center;">
-        <a class="btn btn-primary" href="tel:+48684537088">🟢 Zadzwoń teraz 📞 68 453 70 88</a>
+        <a class="btn btn-primary btn-shimmer pulse" href="tel:+48684537088">🟢 Zadzwoń teraz 📞 68 453 70 88</a>
         <a class="btn btn-secondary" href="#kontakt">🔵 Sprawdź dostępne terminy</a>
       </div>
     </div>
@@ -368,16 +426,20 @@
   <a class="sticky-call" href="tel:+48684537088">📞 Zadzwoń teraz</a>
   <script>
     const revealItems = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
 
-    revealItems.forEach((item) => observer.observe(item));
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add('visible'));
+    }
   </script>
 </body>
 </html>
