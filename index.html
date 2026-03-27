@@ -36,11 +36,28 @@
       min-height: 88vh;
       display: flex;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero h1 { color: white; font-size: clamp(1.95rem, 4vw, 3.3rem); margin-bottom: 16px; }
     .hero .subtitle { font-size: clamp(1.05rem, 2vw, 1.25rem); margin-bottom: 20px; }
     .hero .meta { font-size: 0.98rem; color: #e2e8f0; margin-top: 14px; }
+
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(14, 165, 233, 0.2);
+      filter: blur(2px);
+      animation: floatBlob 9s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero::before { top: 8%; right: 6%; }
+    .hero::after { bottom: 6%; left: 7%; animation-delay: -3s; background: rgba(34, 197, 94, 0.22); }
 
     .btn-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 
@@ -61,6 +78,7 @@
     .btn-primary { background: var(--secondary); color: #052e16; }
     .btn-secondary { background: var(--primary); color: white; }
     .btn-outline { background: transparent; color: var(--dark); border-color: var(--primary); }
+    .pulse { animation: pulseGlow 2.1s ease-in-out infinite; }
 
     .section-title { text-align: center; margin-bottom: 28px; }
 
@@ -76,7 +94,9 @@
       border-radius: 16px;
       padding: 20px;
       height: 100%;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(15, 23, 42, 0.08); }
 
     .birthday {
       display: grid;
@@ -170,6 +190,27 @@
       text-align: center;
       padding: 13px 18px;
       box-shadow: 0 -4px 18px rgba(2, 6, 23, 0.2);
+      animation: pulseGlow 2.4s ease-in-out infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.25); }
+      50% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    }
+
+    @keyframes floatBlob {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-16px) scale(1.08); }
     }
 
     footer { padding: 20px 0 92px; text-align: center; color: var(--muted); font-size: .95rem; }
@@ -195,7 +236,7 @@
     </div>
   </header>
 
-  <section>
+  <section class="reveal">
     <div class="container">
       <h2 class="section-title">Dlaczego rodzice wybierają tę salę zabaw</h2>
       <div class="features">
@@ -207,7 +248,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="container birthday">
       <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80" alt="Urodziny dzieci w sali zabaw" />
       <div>
@@ -222,13 +263,13 @@
         </ul>
         <div class="btn-group">
           <a class="btn btn-secondary" href="#kontakt">🎉 Sprawdź wolne terminy urodzin</a>
-          <a class="btn btn-primary" href="tel:+48684537088">📞 Zadzwoń teraz</a>
+          <a class="btn btn-primary pulse" href="tel:+48684537088">📞 Zadzwoń teraz</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="container">
       <h2 class="section-title">sala zabaw Zielona Góra cennik</h2>
       <div class="pricing">
@@ -248,7 +289,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="container">
       <h2 class="section-title">Zdjęcia Sali Zabaw Arek w Zielonej Górze</h2>
       <div class="gallery">
@@ -261,7 +302,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="container">
       <h2 class="section-title">organizacja urodzin Zielona Góra – opinie rodziców</h2>
       <p style="text-align:center; font-weight:700;">⭐ 4,5 / 5 z ponad 1200 opinii</p>
@@ -276,7 +317,7 @@
     </div>
   </section>
 
-  <section id="kontakt">
+  <section id="kontakt" class="reveal">
     <div class="container">
       <h2 class="section-title">sala zabaw dla dzieci Zielona Góra Zacisze</h2>
       <p style="text-align:center;">📍 Zacisze 22, 65-775 Zielona Góra<br>Sala zabaw dla dzieci w Zielonej Górze – łatwy dojazd i parking.</p>
@@ -290,7 +331,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="container">
       <h2 class="section-title">FAQ</h2>
       <div class="faq">
@@ -310,7 +351,7 @@
     </div>
   </section>
 
-  <section class="final-cta">
+  <section class="final-cta reveal">
     <div class="container">
       <h2>Zorganizuj niezapomniane urodziny dla swojego dziecka 🎉</h2>
       <div class="btn-group" style="justify-content:center;">
@@ -325,5 +366,18 @@
   </footer>
 
   <a class="sticky-call" href="tel:+48684537088">📞 Zadzwoń teraz</a>
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
 </body>
 </html>
