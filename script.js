@@ -1,4 +1,5 @@
 (() => {
+  document.body.classList.add('js-ready');
   const revealItems = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window) {
