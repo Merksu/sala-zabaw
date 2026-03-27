@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sala Zabaw dla dzieci Zielona Góra | Sala Zabaw Arek</title>
+  <meta name="description" content="Największa sala zabaw dla dzieci w Zielonej Górze. Urodziny, cennik, opinie i rezerwacje – Sala Zabaw Arek, ul. Zacisze 22." />
+  <style>
+    :root {
+      --primary: #0ea5e9;
+      --secondary: #22c55e;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { margin-top: 0; color: var(--dark); line-height: 1.25; }
+
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    section { padding: 64px 0; }
+
+    .hero {
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.42)),
+        url("https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1800&q=80") center/cover;
+      color: white;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero h1 { color: white; font-size: clamp(1.95rem, 4vw, 3.3rem); margin-bottom: 16px; }
+    .hero .subtitle { font-size: clamp(1.05rem, 2vw, 1.25rem); margin-bottom: 20px; }
+    .hero .meta { font-size: 0.98rem; color: #e2e8f0; margin-top: 14px; }
+
+    .btn-group { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+
+    .btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 700;
+      border: 2px solid transparent;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.95; }
+    .btn-primary { background: var(--secondary); color: #052e16; }
+    .btn-secondary { background: var(--primary); color: white; }
+    .btn-outline { background: transparent; color: var(--dark); border-color: var(--primary); }
+
+    .section-title { text-align: center; margin-bottom: 28px; }
+
+    .features {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--light);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      height: 100%;
+    }
+
+    .birthday {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .birthday img, .gallery img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      object-fit: cover;
+      min-height: 260px;
+    }
+
+    .checklist { list-style: none; padding: 0; margin: 14px 0 24px; }
+    .checklist li { margin-bottom: 8px; font-weight: 500; }
+
+    .pricing {
+      background: #f1f5f9;
+      border-radius: 16px;
+      padding: 26px;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pricing .columns {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin: 16px 0 24px;
+      text-align: left;
+    }
+
+    .gallery {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .testimonial-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 24px;
+    }
+
+    .map {
+      border: 0;
+      width: 100%;
+      height: 340px;
+      border-radius: 16px;
+    }
+
+    .faq {
+      max-width: 820px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq details {
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 14px 18px;
+      background: #fff;
+    }
+
+    .final-cta {
+      color: white;
+      text-align: center;
+      background: linear-gradient(to right, rgba(2,132,199,.92), rgba(15,23,42,.84)),
+      url("https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1800&q=80") center/cover;
+    }
+
+    .final-cta h2 { color: white; font-size: clamp(1.6rem, 3.5vw, 2.6rem); }
+
+    .sticky-call {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      display: none;
+      background: #16a34a;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      text-align: center;
+      padding: 13px 18px;
+      box-shadow: 0 -4px 18px rgba(2, 6, 23, 0.2);
+    }
+
+    footer { padding: 20px 0 92px; text-align: center; color: var(--muted); font-size: .95rem; }
+
+    @media (max-width: 880px) {
+      .birthday { grid-template-columns: 1fr; }
+      .sticky-call { display: block; }
+      section { padding: 54px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Sala zabaw dla dzieci Zielona Góra</h1>
+      <p class="subtitle"><strong>Największa Sala Zabaw dla Dzieci w Zielonej Górze 🎉</strong><br>Urodziny, zabawa i niezapomniane chwile dla Twojego dziecka.</p>
+      <p>Sala Zabaw Arek przy ul. Zacisze 22 to jedno z najpopularniejszych miejsc dla dzieci w Zielonej Górze. Ponad 1200 opinii i ocena 4,5⭐ w Google.</p>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="tel:+48684537088">🟢 Zadzwoń i zarezerwuj urodziny 📞 68 453 70 88</a>
+        <a class="btn btn-secondary" href="#kontakt">🔵 Sprawdź dostępne terminy</a>
+      </div>
+      <p class="meta">📍 Zielona Góra – ul. Zacisze 22<br>⏰ Otwarte codziennie 11:00 – 20:00</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Dlaczego rodzice wybierają tę salę zabaw</h2>
+      <div class="features">
+        <article class="card"><h3>🎂 Urodziny dla dzieci</h3><p>Kompleksowa organizacja urodzin w Zielonej Górze.</p></article>
+        <article class="card"><h3>🛝 Duża strefa zabawy</h3><p>Zjeżdżalnie, konstrukcje i baseny z kulkami.</p></article>
+        <article class="card"><h3>👨‍👩‍👧 Dla dzieci w różnym wieku</h3><p>Bezpieczna zabawa dla najmłodszych i starszych dzieci.</p></article>
+        <article class="card"><h3>⭐ Ponad 1200 opinii</h3><p>Jedna z najlepiej ocenianych sal zabaw w Zielonej Górze.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container birthday">
+      <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80" alt="Urodziny dzieci w sali zabaw" />
+      <div>
+        <h2>urodziny dla dzieci Zielona Góra</h2>
+        <h3>Organizacja urodzin dla dzieci – Zielona Góra</h3>
+        <p>Szukasz miejsca na urodziny dla dziecka w Zielonej Górze? Sala Zabaw Arek oferuje wyjątkowe przyjęcia urodzinowe z pełną organizacją i świetną zabawą.</p>
+        <ul class="checklist">
+          <li>✔ prywatny stolik urodzinowy</li>
+          <li>✔ przestrzeń do zabawy</li>
+          <li>✔ miejsce dla rodziców</li>
+          <li>✔ możliwość własnego tortu</li>
+        </ul>
+        <div class="btn-group">
+          <a class="btn btn-secondary" href="#kontakt">🎉 Sprawdź wolne terminy urodzin</a>
+          <a class="btn btn-primary" href="tel:+48684537088">📞 Zadzwoń teraz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">sala zabaw Zielona Góra cennik</h2>
+      <div class="pricing">
+        <h3>Wejścia indywidualne</h3>
+        <div class="columns">
+          <div class="card">
+            <h4>Poniedziałek – Czwartek</h4>
+            <p>1h – 45 zł<br>2h – 55 zł<br>cały dzień – 65 zł</p>
+          </div>
+          <div class="card">
+            <h4>Piątek – Niedziela</h4>
+            <p>ceny weekendowe</p>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="tel:+48684537088">🟢 Zadzwoń i zapytaj o szczegóły</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">Zdjęcia Sali Zabaw Arek w Zielonej Górze</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?auto=format&fit=crop&w=800&q=80" alt="konstrukcje zabaw" />
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" alt="zjeżdżalnie" />
+        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80" alt="strefa urodzinowa" />
+        <img src="https://images.unsplash.com/photo-1516627145497-3599f26934d4?auto=format&fit=crop&w=800&q=80" alt="baseny z kulkami" />
+        <img src="https://images.unsplash.com/photo-1486927181919-3ac1fc3a8082?auto=format&fit=crop&w=800&q=80" alt="dzieci bawiące się" />
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">organizacja urodzin Zielona Góra – opinie rodziców</h2>
+      <p style="text-align:center; font-weight:700;">⭐ 4,5 / 5 z ponad 1200 opinii</p>
+      <div class="testimonial-grid">
+        <blockquote class="card">„Idealne miejsce na weekend z dzieckiem.”</blockquote>
+        <blockquote class="card">„Super miejsce na organizację urodzin.”</blockquote>
+        <blockquote class="card">„Dużo atrakcji, czysto i bezpiecznie. Dzieci zachwycone!”</blockquote>
+      </div>
+      <div class="btn-group" style="justify-content:center; margin-top:20px;">
+        <a class="btn btn-primary" href="tel:+48684537088">📞 Zarezerwuj urodziny dla swojego dziecka</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <h2 class="section-title">sala zabaw dla dzieci Zielona Góra Zacisze</h2>
+      <p style="text-align:center;">📍 Zacisze 22, 65-775 Zielona Góra<br>Sala zabaw dla dzieci w Zielonej Górze – łatwy dojazd i parking.</p>
+      <iframe
+        class="map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Zacisze%2022%2C%20Zielona%20G%C3%B3ra&output=embed"
+        title="Mapa dojazdu do Sali Zabaw Arek"
+      ></iframe>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Ile kosztuje sala zabaw w Zielonej Górze?</summary>
+          <p>Ceny zaczynają się od 45 zł za godzinę.</p>
+        </details>
+        <details>
+          <summary>Czy można zorganizować urodziny?</summary>
+          <p>Tak – organizujemy urodziny dla dzieci.</p>
+        </details>
+        <details>
+          <summary>W jakim wieku są dzieci?</summary>
+          <p>Sala przeznaczona jest dla dzieci w różnym wieku.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container">
+      <h2>Zorganizuj niezapomniane urodziny dla swojego dziecka 🎉</h2>
+      <div class="btn-group" style="justify-content:center;">
+        <a class="btn btn-primary" href="tel:+48684537088">🟢 Zadzwoń teraz 📞 68 453 70 88</a>
+        <a class="btn btn-secondary" href="#kontakt">🔵 Sprawdź dostępne terminy</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © Sala Zabaw Arek, Zielona Góra · Urodziny i zabawa dla dzieci
+  </footer>
+
+  <a class="sticky-call" href="tel:+48684537088">📞 Zadzwoń teraz</a>
+</body>
+</html>
